@@ -107,7 +107,7 @@ export default function BookingForm() {
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.95 }}
           transition={{ type: "spring", stiffness: 300, damping: 25 }}
-          className="w-full max-w-md bg-card border border-subtle rounded-2xl shadow-2xl overflow-hidden"
+          className="w-full max-w-md bg-card border border-subtle rounded-2xl shadow-2xl flex flex-col max-h-[90vh]"
         >
           <div className="flex items-center justify-between px-6 pt-6 pb-2">
             <h2 className="text-lg font-bold text-primary">
@@ -130,7 +130,7 @@ export default function BookingForm() {
             </div>
           </div>
 
-          <div className="px-6 pb-6 space-y-4">
+          <div className="overflow-y-auto flex-1 px-6 pb-6 space-y-4">
             <Field
               label="Your name *"
               value={formData.name}
