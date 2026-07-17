@@ -100,7 +100,7 @@ export default function BookingForm() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4"
+        className="fixed inset-0 z-50 flex items-center justify-center bg-[rgba(15,23,42,0.7)] backdrop-blur-md p-4"
       >
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
@@ -122,8 +122,8 @@ export default function BookingForm() {
           </div>
 
           <div className="px-6 pb-4">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 border border-subtle text-xs text-secondary">
-              <Clock className="w-3 h-3" />
+            <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[rgba(212,101,74,0.1)] border border-[rgba(212,101,74,0.2)] text-xs text-secondary">
+              <Clock className="w-3 h-3 text-[#D4654A]" />
               <span>
                 {dateStr} {selectedTime} &middot; {duration} min
               </span>
@@ -155,7 +155,7 @@ export default function BookingForm() {
             />
 
             <div className="space-y-1.5">
-              <label className="block text-sm text-secondary">
+              <label className="block text-sm text-primary font-medium">
                 Select Meeting Type *
               </label>
               <select
@@ -169,10 +169,10 @@ export default function BookingForm() {
                   }
                 }}
                 className={cn(
-                  "w-full bg-page border rounded-lg h-12 px-4 text-sm text-primary focus:outline-none focus:ring-1 transition-colors appearance-none",
+                  "w-full bg-page border rounded-xl h-12 px-4 text-sm text-primary focus:outline-none focus:ring-1 transition-colors appearance-none",
                   errors.meetingType
-                    ? "border-red-500/50 focus:border-red-500 focus:ring-red-500/20"
-                    : "border-subtle focus:border-white/30 focus:ring-white/20",
+                    ? "border-red-400/50 focus:border-red-400 focus:ring-red-400/20"
+                    : "border-subtle focus:border-[#D4654A]/40 focus:ring-[#D4654A]/20",
                   !formData.meetingType && "text-muted"
                 )}
               >
@@ -225,7 +225,7 @@ export default function BookingForm() {
             )}
 
             <div className="space-y-1.5">
-              <label className="block text-sm text-secondary">
+              <label className="block text-sm text-primary font-medium">
                 Additional notes
               </label>
               <textarea
@@ -233,7 +233,7 @@ export default function BookingForm() {
                 onChange={(e) => updateFormData("notes", e.target.value)}
                 placeholder="Please share anything that will help prepare for our meeting."
                 rows={3}
-                className="w-full bg-page border border-subtle rounded-lg px-4 py-3 text-sm text-primary placeholder:text-muted focus:outline-none focus:border-white/30 focus:ring-1 focus:ring-white/20 resize-none transition-colors"
+                className="w-full bg-page border border-subtle rounded-xl px-4 py-3 text-sm text-primary placeholder:text-muted focus:outline-none focus:border-[#D4654A]/40 focus:ring-1 focus:ring-[#D4654A]/20 resize-none transition-colors"
               />
             </div>
             {errors._form && (
@@ -261,7 +261,7 @@ export default function BookingForm() {
                     !formData.clinicCity.trim() ||
                     !formData.clinicState.trim()))
               }
-              className="h-10 px-6 rounded-lg bg-active text-inverse text-sm font-medium hover:opacity-90 transition-opacity disabled:opacity-30 disabled:cursor-not-allowed"
+              className="h-10 px-6 rounded-xl bg-[#D4654A] text-white text-sm font-medium hover:opacity-90 transition-opacity disabled:opacity-30 disabled:cursor-not-allowed shadow-lg shadow-[#D4654A]/25"
             >
               {submitting ? "Booking..." : "Confirm"}
             </button>
@@ -289,17 +289,17 @@ function Field({
 }) {
   return (
     <div className="space-y-1.5">
-      <label className="block text-sm text-secondary">{label}</label>
+      <label className="block text-sm text-primary font-medium">{label}</label>
       <input
         type={type}
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
         className={cn(
-          "w-full bg-page border rounded-lg h-12 px-4 text-sm text-primary placeholder:text-muted focus:outline-none focus:ring-1 transition-colors",
+          "w-full bg-page border rounded-xl h-12 px-4 text-sm text-primary placeholder:text-muted focus:outline-none focus:ring-1 transition-colors",
           error
-            ? "border-red-500/50 focus:border-red-500 focus:ring-red-500/20"
-            : "border-subtle focus:border-white/30 focus:ring-white/20"
+            ? "border-red-400/50 focus:border-red-400 focus:ring-red-400/20"
+            : "border-subtle focus:border-[#D4654A]/40 focus:ring-[#D4654A]/20"
         )}
       />
       {error && (

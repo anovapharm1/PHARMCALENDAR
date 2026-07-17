@@ -9,13 +9,13 @@ export default function ViewToggle() {
 
   return (
     <div className="flex items-center gap-2">
-      <div className="flex items-center border border-subtle rounded-lg overflow-hidden">
+      <div className="flex items-center border border-subtle rounded-xl overflow-hidden bg-card">
         <button
           onClick={() => setViewMode("day")}
           className={cn(
             "p-1.5 transition-colors",
             viewMode === "day"
-              ? "bg-white/10 text-primary"
+              ? "bg-[#D4654A] text-white"
               : "text-muted hover:text-secondary"
           )}
         >
@@ -26,7 +26,7 @@ export default function ViewToggle() {
           className={cn(
             "p-1.5 transition-colors",
             viewMode === "week"
-              ? "bg-white/10 text-primary"
+              ? "bg-[#D4654A] text-white"
               : "text-muted hover:text-secondary"
           )}
         >
@@ -34,12 +34,12 @@ export default function ViewToggle() {
         </button>
       </div>
 
-      <div className="flex items-center border border-subtle rounded-lg overflow-hidden">
+      <div className="flex items-center border border-subtle rounded-xl overflow-hidden bg-card">
         <button
           onClick={() => !use24h && toggle24h()}
           className={cn(
             "px-2.5 py-1 text-xs font-medium transition-colors",
-            !use24h ? "bg-white/10 text-primary" : "text-muted hover:text-secondary"
+            !use24h ? "bg-[#D4654A] text-white" : "text-muted hover:text-secondary"
           )}
         >
           12h
@@ -48,7 +48,7 @@ export default function ViewToggle() {
           onClick={() => use24h && toggle24h()}
           className={cn(
             "px-2.5 py-1 text-xs font-medium transition-colors",
-            use24h ? "bg-white/10 text-primary" : "text-muted hover:text-secondary"
+            use24h ? "bg-[#D4654A] text-white" : "text-muted hover:text-secondary"
           )}
         >
           24h

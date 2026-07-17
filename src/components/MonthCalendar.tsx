@@ -61,6 +61,7 @@ export default function MonthCalendar() {
   const today = useMemo(() => new Date(), []);
   const [viewYear, setViewYear] = useState(today.getFullYear());
   const [viewMonth, setViewMonth] = useState(today.getMonth());
+
   const monthName = new Date(viewYear, viewMonth).toLocaleDateString("en-US", {
     month: "long",
     year: "numeric",
@@ -125,7 +126,7 @@ export default function MonthCalendar() {
         {DAYS.map((day) => (
           <div
             key={day}
-            className="text-xs font-medium text-muted uppercase tracking-wider text-center h-6 flex items-center justify-center"
+            className="text-xs font-medium text-muted tracking-wider text-center h-6 flex items-center justify-center"
           >
             {day}
           </div>
@@ -154,17 +155,17 @@ export default function MonthCalendar() {
                 onClick={() => !disabled && !isPast && handleDateClick(day)}
                 disabled={disabled || isPast}
                 className={cn(
-                  "relative w-[48px] h-[48px] flex items-center justify-center rounded-lg text-sm font-medium transition-all duration-150",
+                  "relative w-[48px] h-[48px] flex items-center justify-center rounded-full text-sm font-medium transition-all duration-150",
                   isSel
-                    ? "bg-active text-inverse font-semibold"
+                    ? "bg-[#D4654A] text-white font-semibold shadow-[0_0_0_3px_rgba(212,101,74,0.3)]"
                     : disabled || isPast
-                    ? "text-muted opacity-30 cursor-not-allowed"
-                    : "text-secondary hover:bg-hover hover:text-primary cursor-pointer"
+                    ? "text-muted opacity-25 cursor-not-allowed"
+                    : "text-primary hover:bg-hover cursor-pointer"
                 )}
               >
                 {day}
                 {isTdy && !isSel && (
-                  <span className="absolute bottom-1.5 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-primary" />
+                  <span className="absolute bottom-2 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-[#D4654A]" />
                 )}
               </motion.button>
             );

@@ -59,9 +59,9 @@ export default function ConfirmationView() {
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
           transition={{ type: "spring", stiffness: 300, damping: 20, delay: 0.15 }}
-          className="w-16 h-16 rounded-full bg-white flex items-center justify-center"
+          className="w-16 h-16 rounded-full bg-[#D4654A] flex items-center justify-center shadow-lg shadow-[#D4654A]/30"
         >
-          <Check className="w-8 h-8 text-inverse" />
+          <Check className="w-8 h-8 text-white" />
         </motion.div>
 
         <div className="space-y-1">
@@ -73,7 +73,7 @@ export default function ConfirmationView() {
           </p>
         </div>
 
-        <div className="w-full p-4 rounded-lg bg-white/5 border border-subtle space-y-1 text-sm">
+        <div className="w-full p-4 rounded-xl bg-card border border-subtle space-y-1 text-sm shadow-sm">
           <p className="text-primary font-medium">
             {dateStr}
           </p>
@@ -86,7 +86,7 @@ export default function ConfirmationView() {
         <div className="flex flex-col gap-2 w-full">
           <button
             onClick={downloadICS}
-            className="flex items-center justify-center gap-2 h-10 rounded-lg border border-subtle text-sm text-primary hover:bg-hover transition-colors"
+            className="flex items-center justify-center gap-2 h-10 rounded-xl border border-subtle text-sm text-primary hover:bg-hover transition-colors"
           >
             <Download className="w-4 h-4" />
             Add to Calendar (.ics)
@@ -95,7 +95,7 @@ export default function ConfirmationView() {
             href={googleUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center gap-2 h-10 rounded-lg border border-subtle text-sm text-primary hover:bg-hover transition-colors"
+            className="flex items-center justify-center gap-2 h-10 rounded-xl border border-subtle text-sm text-primary hover:bg-hover transition-colors"
           >
             <Calendar className="w-4 h-4" />
             Google Calendar
@@ -104,14 +104,14 @@ export default function ConfirmationView() {
             href={`https://outlook.live.com/calendar/0/deeplink/compose?subject=Meeting+with+Peer&startdt=${selectedDate.toISOString()}&enddt=${endDate.toISOString()}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center gap-2 h-10 rounded-lg border border-subtle text-sm text-primary hover:bg-hover transition-colors"
+            className="flex items-center justify-center gap-2 h-10 rounded-xl border border-subtle text-sm text-primary hover:bg-hover transition-colors"
           >
             <Calendar className="w-4 h-4" />
             Outlook Calendar
           </a>
           <button
             onClick={reschedule}
-            className="flex items-center justify-center gap-2 h-10 rounded-lg border border-subtle text-sm text-muted hover:text-primary hover:bg-hover transition-colors"
+            className="flex items-center justify-center gap-2 h-10 rounded-xl border border-subtle text-sm text-muted hover:text-primary hover:bg-hover transition-colors"
           >
             <RefreshCw className="w-4 h-4" />
             Reschedule Meeting

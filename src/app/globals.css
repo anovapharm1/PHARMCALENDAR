@@ -1,17 +1,17 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-page: #0A0A0A;
-  --color-card: #141414;
-  --color-hover: #1F2937;
-  --color-active: #FFFFFF;
-  --color-subtle: rgba(255, 255, 255, 0.06);
-  --color-focus: rgba(255, 255, 255, 0.12);
+  --color-page: #0F172A;
+  --color-card: #1E293B;
+  --color-hover: #334155;
+  --color-active: #D4654A;
+  --color-subtle: rgba(255, 255, 255, 0.08);
+  --color-focus: rgba(212, 101, 74, 0.3);
   --color-primary: #FFFFFF;
-  --color-secondary: rgba(255, 255, 255, 0.5);
+  --color-secondary: rgba(255, 255, 255, 0.6);
   --color-muted: rgba(255, 255, 255, 0.35);
-  --color-inverse: #0A0A0A;
-  --color-accent: #2563EB;
+  --color-inverse: #FFFFFF;
+  --color-accent: #D4654A;
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "SF Mono", "SFMono-Regular", ui-monospace, monospace;
 }
@@ -21,15 +21,16 @@
 }
 
 body {
-  background: #0A0A0A;
+  background: #0F172A;
   color: #FFFFFF;
   font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
 }
 
 ::selection {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(212, 101, 74, 0.3);
   color: #FFFFFF;
 }
 
@@ -37,6 +38,6 @@ input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus {
   -webkit-text-fill-color: #FFFFFF;
-  -webkit-box-shadow: 0 0 0px 1000px #0A0A0A inset;
+  -webkit-box-shadow: 0 0 0px 1000px #0F172A inset;
   transition: background-color 5000s ease-in-out 0s;
 }

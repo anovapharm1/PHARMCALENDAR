@@ -9,6 +9,14 @@ import { parseTimeDisplay } from "@/lib/utils";
 import { cn } from "@/lib/utils";
 import ViewToggle from "./ViewToggle";
 
+function isSameDay(a: Date, b: Date) {
+  return (
+    a.getDate() === b.getDate() &&
+    a.getMonth() === b.getMonth() &&
+    a.getFullYear() === b.getFullYear()
+  );
+}
+
 function formatTimeDisplay(
   hour: number,
   minute: number,
@@ -20,14 +28,6 @@ function formatTimeDisplay(
   const period = hour >= 12 ? "pm" : "am";
   const h = hour % 12 || 12;
   return `${h}:${minute.toString().padStart(2, "0")}${period}`;
-}
-
-function isSameDay(a: Date, b: Date) {
-  return (
-    a.getDate() === b.getDate() &&
-    a.getMonth() === b.getMonth() &&
-    a.getFullYear() === b.getFullYear()
-  );
 }
 
 function DayView({
@@ -56,43 +56,35 @@ function DayView({
     );
   }
 
-  const dayLabel = date.toLocaleDateString("en-US", {
-    weekday: "short",
-    day: "2-digit",
-  });
-
   return (
-    <div className="space-y-3">
-      <h3 className="text-base font-semibold text-primary">{dayLabel}</h3>
-      <div className="space-y-2">
-        {slots.map((slot) => {
-          const { hour, minute } = parseTimeDisplay(slot);
-          const display = formatTimeDisplay(hour, minute, use24h);
-          const isSelected =
-            selectedDate &&
-            isSameDay(date, selectedDate) &&
-            selectedTime === display;
-          const isBooked = isSlotBooked(date.toISOString().split("T")[0], display);
-          return (
-            <motion.button
-              key={slot}
-              onClick={() => !isBooked && onSelect(display)}
-              whileHover={isBooked ? undefined : { y: -1 }}
-              transition={{ type: "spring", stiffness: 400, damping: 25 }}
-              className={cn(
-                "w-full h-12 flex items-center justify-center rounded-lg border text-sm font-medium transition-colors duration-150",
-                isBooked
-                  ? "border-subtle text-muted line-through cursor-not-allowed opacity-40"
-                  : isSelected
-                  ? "bg-active text-inverse border-active"
-                  : "border-subtle text-primary hover:bg-hover"
-              )}
-            >
-              {display}
-            </motion.button>
-          );
-        })}
-      </div>
+    <div className="space-y-2.5">
+      {slots.map((slot) => {
+        const { hour, minute } = parseTimeDisplay(slot);
+        const display = formatTimeDisplay(hour, minute, use24h);
+        const isSelected =
+          selectedDate &&
+          isSameDay(date, selectedDate) &&
+          selectedTime === display;
+        const isBooked = isSlotBooked(date.toISOString().split("T")[0], display);
+        return (
+          <motion.button
+            key={slot}
+            onClick={() => !isBooked && onSelect(display)}
+            whileHover={isBooked ? undefined : { y: -2 }}
+            transition={{ type: "spring", stiffness: 400, damping: 25 }}
+            className={cn(
+              "w-full h-12 flex items-center justify-center rounded-xl border text-sm font-medium transition-all duration-150",
+              isBooked
+                ? "border-[rgba(255,255,255,0.06)] text-muted line-through cursor-not-allowed opacity-30 bg-card"
+                : isSelected
+                ? "bg-[#D4654A] text-white border-[#D4654A] shadow-lg shadow-[#D4654A]/20"
+                : "bg-[#FEFCF8] border-[rgba(61,64,91,0.1)] text-[#3D405B] hover:shadow-lg hover:shadow-[#D4654A]/10 hover:border-[#D4654A]/30 hover:bg-white border-l-2 border-l-transparent hover:border-l-[#D4654A]"
+            )}
+          >
+            {display}
+          </motion.button>
+        );
+      })}
     </div>
   );
 }
@@ -156,7 +148,7 @@ function WeekView({
 
           return (
             <div key={key} className="space-y-2">
-              <h4 className="text-xs font-semibold text-secondary uppercase tracking-wider text-center">
+              <h4 className="text-xs font-semibold text-secondary tracking-wider text-center">
                 {dayLabel}
               </h4>
               {fullyBooked ? (
@@ -178,19 +170,19 @@ function WeekView({
                       <motion.button
                         key={slot}
                         onClick={() => !isBooked && onSelect(display)}
-                        whileHover={isBooked ? undefined : { y: -1 }}
+                        whileHover={isBooked ? undefined : { y: -2 }}
                         transition={{
                           type: "spring",
                           stiffness: 400,
                           damping: 25,
                         }}
                         className={cn(
-                          "w-full h-10 flex items-center justify-center rounded-lg border text-xs font-medium transition-colors duration-150",
+                          "w-full h-10 flex items-center justify-center rounded-xl border text-xs font-medium transition-all duration-150",
                           isBooked
-                            ? "border-subtle text-muted line-through cursor-not-allowed opacity-40"
+                            ? "border-[rgba(255,255,255,0.06)] text-muted line-through cursor-not-allowed opacity-30 bg-card"
                             : isSelected
-                            ? "bg-active text-inverse border-active"
-                            : "border-subtle text-primary hover:bg-hover"
+                            ? "bg-[#D4654A] text-white border-[#D4654A] shadow-lg shadow-[#D4654A]/20"
+                            : "bg-[#FEFCF8] border-[rgba(61,64,91,0.1)] text-[#3D405B] hover:shadow-lg hover:shadow-[#D4654A]/10 hover:border-[#D4654A]/30 hover:bg-white border-l-2 border-l-transparent hover:border-l-[#D4654A]"
                         )}
                       >
                         {display}
@@ -202,7 +194,7 @@ function WeekView({
                       (_, i) => (
                         <div
                           key={`empty-${i}`}
-                          className="w-full h-10 rounded-lg border border-dashed border-white/[0.03]"
+                          className="w-full h-10 rounded-xl border border-dashed border-[rgba(255,255,255,0.04)]"
                         />
                       )
                     )}
@@ -246,18 +238,23 @@ export default function TimeSlotGrid() {
         <div className="flex items-center gap-3">
           <button
             onClick={backStep}
-            className="w-10 h-10 flex items-center justify-center rounded-lg text-secondary hover:bg-hover hover:text-primary transition-colors"
+            className="w-10 h-10 flex items-center justify-center rounded-xl text-secondary hover:bg-hover hover:text-primary transition-colors"
             title="Back to calendar"
           >
             <ArrowLeft className="w-5 h-5" />
           </button>
-          <h2 className="text-lg font-semibold text-primary tracking-tight">
-            {selectedDate.toLocaleDateString("en-US", {
-              weekday: "long",
-              month: "long",
-              day: "numeric",
-            })}
-          </h2>
+          <div>
+            <h2 className="text-lg font-semibold text-primary tracking-tight">
+              Pick a time that works for you
+            </h2>
+            <p className="text-xs text-secondary mt-0.5">
+              {selectedDate.toLocaleDateString("en-US", {
+                weekday: "long",
+                month: "long",
+                day: "numeric",
+              })}
+            </p>
+          </div>
         </div>
         <ViewToggle />
       </div>

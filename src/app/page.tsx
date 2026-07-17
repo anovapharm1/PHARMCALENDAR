@@ -44,7 +44,7 @@ export default function Home() {
   }, [step, selectedDate, selectedTime]);
 
   return (
-    <div className="min-h-screen bg-page flex flex-col lg:flex-row">
+    <div className="min-h-screen flex flex-col lg:flex-row">
       {step !== "success" && <HostProfile />}
 
       <main className="flex-1 flex flex-col min-h-0">
