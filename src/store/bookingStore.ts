@@ -1,7 +1,7 @@
 import { create } from "zustand";
 
 export type Step = "profile" | "month" | "week" | "form" | "success";
-export type Duration = 15 | 30 | 45;
+export type Duration = 30 | 45 | 60;
 
 export interface BookedSlot {
   date: string;
