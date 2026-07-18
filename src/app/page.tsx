@@ -44,20 +44,22 @@ export default function Home() {
   }, [step, selectedDate, selectedTime]);
 
   return (
-    <div className="min-h-screen flex flex-col lg:flex-row">
-      {step !== "success" && <HostProfile />}
+    <div className="min-h-screen bg-page flex items-start justify-center p-4 lg:p-8">
+      <div className="w-full max-w-[1100px] bg-card rounded-2xl shadow-sm border border-[rgba(0,0,0,0.04)] flex flex-col lg:flex-row overflow-hidden">
+        <HostProfile />
 
-      <main className="flex-1 flex flex-col min-h-0">
-        {step === "success" ? (
-          <ConfirmationView />
-        ) : step === "week" && selectedDate ? (
-          <TimeSlotGrid />
-        ) : (
-          <MonthCalendar />
-        )}
-      </main>
+        <main className="flex-1 flex flex-col min-h-0">
+          {step === "success" ? (
+            <ConfirmationView />
+          ) : step === "week" && selectedDate ? (
+            <TimeSlotGrid />
+          ) : (
+            <MonthCalendar />
+          )}
+        </main>
 
-      <BookingForm />
+        <BookingForm />
+      </div>
     </div>
   );
 }

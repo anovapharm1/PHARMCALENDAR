@@ -100,30 +100,30 @@ export default function BookingForm() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        className="fixed inset-0 z-50 flex items-center justify-center bg-[rgba(15,23,42,0.7)] backdrop-blur-md p-4"
+        className="fixed inset-0 z-50 flex items-center justify-center bg-[rgba(15,23,42,0.5)] backdrop-blur-sm p-4"
       >
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.95 }}
           transition={{ type: "spring", stiffness: 300, damping: 25 }}
-          className="w-full max-w-md bg-card border border-subtle rounded-2xl shadow-2xl flex flex-col max-h-[90vh]"
+          className="w-full max-w-md bg-white border border-[#e2e8f0] rounded-2xl shadow-xl flex flex-col max-h-[90vh]"
         >
           <div className="flex items-center justify-between px-6 pt-6 pb-2">
-            <h2 className="text-lg font-bold text-primary">
+            <h2 className="text-lg font-bold text-[#1e293b]">
               Confirm Meeting Details
             </h2>
             <button
               onClick={backStep}
-              className="w-8 h-8 flex items-center justify-center rounded-lg text-muted hover:bg-hover hover:text-primary transition-colors"
+              className="w-8 h-8 flex items-center justify-center rounded-lg text-[#94a3b8] hover:bg-[#f8f9fc] hover:text-[#64748b] transition-colors"
             >
               <X className="w-4 h-4" />
             </button>
           </div>
 
           <div className="px-6 pb-4">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[rgba(212,101,74,0.1)] border border-[rgba(212,101,74,0.2)] text-xs text-secondary">
-              <Clock className="w-3 h-3 text-[#D4654A]" />
+            <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[rgba(30,64,175,0.06)] border border-[rgba(30,64,175,0.1)] text-xs text-[#64748b]">
+              <Clock className="w-3 h-3 text-[#1e40af]" />
               <span>
                 {dateStr} {selectedTime} &middot; {duration} min
               </span>
@@ -155,7 +155,7 @@ export default function BookingForm() {
             />
 
             <div className="space-y-1.5">
-              <label className="block text-sm text-primary font-medium">
+              <label className="block text-sm text-[#1e293b] font-medium">
                 Select Meeting Type *
               </label>
               <select
@@ -169,20 +169,20 @@ export default function BookingForm() {
                   }
                 }}
                 className={cn(
-                  "w-full bg-page border rounded-xl h-12 px-4 text-sm text-primary focus:outline-none focus:ring-1 transition-colors appearance-none",
+                  "w-full bg-[#f8f9fc] border rounded-xl h-12 px-4 text-sm text-[#1e293b] focus:outline-none focus:ring-1 transition-colors appearance-none",
                   errors.meetingType
                     ? "border-red-400/50 focus:border-red-400 focus:ring-red-400/20"
-                    : "border-subtle focus:border-[#D4654A]/40 focus:ring-[#D4654A]/20",
-                  !formData.meetingType && "text-muted"
+                    : "border-[#e2e8f0] focus:border-[#1e40af]/40 focus:ring-[rgba(30,64,175,0.2)]",
+                  !formData.meetingType && "text-[#94a3b8]"
                 )}
               >
-                <option value="" disabled className="bg-page">
+                <option value="" disabled className="bg-white">
                   Select a meeting type
                 </option>
-                <option value="Virtual Meeting" className="bg-page">
+                <option value="Virtual Meeting" className="bg-white">
                   Virtual Meeting
                 </option>
-                <option value="In-Person Clinic Meeting" className="bg-page">
+                <option value="In-Person Clinic Meeting" className="bg-white">
                   In-Person Clinic Meeting
                 </option>
               </select>
@@ -225,7 +225,7 @@ export default function BookingForm() {
             )}
 
             <div className="space-y-1.5">
-              <label className="block text-sm text-primary font-medium">
+              <label className="block text-sm text-[#1e293b] font-medium">
                 Additional notes
               </label>
               <textarea
@@ -233,7 +233,7 @@ export default function BookingForm() {
                 onChange={(e) => updateFormData("notes", e.target.value)}
                 placeholder="Please share anything that will help prepare for our meeting."
                 rows={3}
-                className="w-full bg-page border border-subtle rounded-xl px-4 py-3 text-sm text-primary placeholder:text-muted focus:outline-none focus:border-[#D4654A]/40 focus:ring-1 focus:ring-[#D4654A]/20 resize-none transition-colors"
+                className="w-full bg-[#f8f9fc] border border-[#e2e8f0] rounded-xl px-4 py-3 text-sm text-[#1e293b] placeholder:text-[#94a3b8] focus:outline-none focus:border-[#1e40af]/40 focus:ring-1 focus:ring-[rgba(30,64,175,0.2)] resize-none transition-colors"
               />
             </div>
             {errors._form && (
@@ -241,10 +241,10 @@ export default function BookingForm() {
             )}
           </div>
 
-          <div className="flex items-center justify-between px-6 py-4 border-t border-subtle">
+          <div className="flex items-center justify-between px-6 py-4 border-t border-[#e2e8f0]">
             <button
               onClick={backStep}
-              className="text-sm text-secondary hover:text-primary transition-colors"
+              className="text-sm text-[#94a3b8] hover:text-[#64748b] transition-colors"
             >
               Back
             </button>
@@ -261,7 +261,7 @@ export default function BookingForm() {
                     !formData.clinicCity.trim() ||
                     !formData.clinicState.trim()))
               }
-              className="h-10 px-6 rounded-xl bg-[#D4654A] text-white text-sm font-medium hover:opacity-90 transition-opacity disabled:opacity-30 disabled:cursor-not-allowed shadow-lg shadow-[#D4654A]/25"
+              className="h-10 px-6 rounded-xl bg-gradient-to-r from-[#1e3a8a] via-[#1e40af] to-[#3b82f6] text-white text-sm font-medium hover:opacity-90 transition-opacity disabled:opacity-30 disabled:cursor-not-allowed shadow-md shadow-[rgba(30,64,175,0.25)]"
             >
               {submitting ? "Booking..." : "Confirm"}
             </button>
@@ -289,17 +289,17 @@ function Field({
 }) {
   return (
     <div className="space-y-1.5">
-      <label className="block text-sm text-primary font-medium">{label}</label>
+      <label className="block text-sm text-[#1e293b] font-medium">{label}</label>
       <input
         type={type}
         value={value}
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
         className={cn(
-          "w-full bg-page border rounded-xl h-12 px-4 text-sm text-primary placeholder:text-muted focus:outline-none focus:ring-1 transition-colors",
+          "w-full bg-[#f8f9fc] border rounded-xl h-12 px-4 text-sm text-[#1e293b] placeholder:text-[#94a3b8] focus:outline-none focus:ring-1 transition-colors",
           error
             ? "border-red-400/50 focus:border-red-400 focus:ring-red-400/20"
-            : "border-subtle focus:border-[#D4654A]/40 focus:ring-[#D4654A]/20"
+            : "border-[#e2e8f0] focus:border-[#1e40af]/40 focus:ring-[rgba(30,64,175,0.2)]"
         )}
       />
       {error && (

@@ -101,21 +101,21 @@ export default function MonthCalendar() {
   }
 
   return (
-    <div className="flex flex-col gap-5 p-6">
+    <div className="flex flex-col gap-6 p-6 lg:p-8">
       <div className="flex items-center justify-between">
-        <h2 className="text-lg font-semibold text-primary tracking-tight">
+        <h2 className="text-xl font-bold text-[#1e293b] font-serif tracking-tight">
           {monthName}
         </h2>
         <div className="flex items-center gap-1">
           <button
             onClick={() => navigate(-1)}
-            className="w-8 h-8 flex items-center justify-center rounded-lg text-secondary hover:bg-hover hover:text-primary transition-colors"
+            className="w-9 h-9 flex items-center justify-center rounded-full border border-[#e2e8f0] text-[#94a3b8] hover:border-[#cbd5e1] hover:text-[#64748b] transition-colors"
           >
             <ChevronLeft className="w-4 h-4" />
           </button>
           <button
             onClick={() => navigate(1)}
-            className="w-8 h-8 flex items-center justify-center rounded-lg text-secondary hover:bg-hover hover:text-primary transition-colors"
+            className="w-9 h-9 flex items-center justify-center rounded-full border border-[#e2e8f0] text-[#94a3b8] hover:border-[#cbd5e1] hover:text-[#64748b] transition-colors"
           >
             <ChevronRight className="w-4 h-4" />
           </button>
@@ -126,7 +126,7 @@ export default function MonthCalendar() {
         {DAYS.map((day) => (
           <div
             key={day}
-            className="text-xs font-medium text-muted tracking-wider text-center h-6 flex items-center justify-center"
+            className="text-xs font-semibold text-[#cbd5e1] tracking-[0.08em] text-center h-6 flex items-center justify-center"
           >
             {day}
           </div>
@@ -155,17 +155,17 @@ export default function MonthCalendar() {
                 onClick={() => !disabled && !isPast && handleDateClick(day)}
                 disabled={disabled || isPast}
                 className={cn(
-                  "relative w-[48px] h-[48px] flex items-center justify-center rounded-full text-sm font-medium transition-all duration-150",
+                  "relative w-[48px] h-[48px] flex items-center justify-center rounded-xl text-sm font-medium transition-all duration-150",
                   isSel
-                    ? "bg-[#D4654A] text-white font-semibold shadow-[0_0_0_3px_rgba(212,101,74,0.3)]"
+                    ? "bg-gradient-to-r from-[#1e3a8a] via-[#1e40af] to-[#3b82f6] text-white shadow-lg shadow-[rgba(30,64,175,0.25)]"
                     : disabled || isPast
-                    ? "text-muted opacity-25 cursor-not-allowed"
-                    : "text-primary hover:bg-hover cursor-pointer"
+                    ? "text-[#cbd5e1] cursor-not-allowed"
+                    : "text-[#1e293b] hover:bg-[#f8f9fc] hover:border hover:border-[#e2e8f0] cursor-pointer"
                 )}
               >
                 {day}
                 {isTdy && !isSel && (
-                  <span className="absolute bottom-2 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-[#D4654A]" />
+                  <span className="absolute bottom-1.5 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-[#1e40af]" />
                 )}
               </motion.button>
             );

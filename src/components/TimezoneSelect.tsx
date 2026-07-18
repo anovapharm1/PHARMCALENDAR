@@ -27,13 +27,13 @@ export default function TimezoneSelect() {
     <div ref={ref} className="relative">
       <button
         onClick={() => setOpen(!open)}
-        className="flex items-center gap-1 text-sm text-[rgba(61,64,91,0.6)] hover:text-[#3D405B] transition-colors"
+        className="flex items-center gap-1 text-sm text-[#94a3b8] hover:text-[#64748b] transition-colors"
       >
         <span>{shortTz}</span>
         <ChevronDown className="w-3 h-3" />
       </button>
       {open && (
-        <div className="absolute left-0 top-full mt-1 z-50 w-56 max-h-48 overflow-y-auto bg-card border border-subtle rounded-xl shadow-2xl">
+        <div className="absolute left-0 top-full mt-1 z-50 w-56 max-h-48 overflow-y-auto bg-white border border-[#e2e8f0] rounded-xl shadow-lg">
           {TIMEZONES.map((tz) => (
             <button
               key={tz}
@@ -44,8 +44,8 @@ export default function TimezoneSelect() {
               className={cn(
                 "w-full text-left px-3 py-2 text-sm transition-colors",
                 tz === timezone
-                  ? "text-primary bg-hover"
-                  : "text-secondary hover:bg-hover hover:text-primary"
+                  ? "text-[#1e40af] bg-[#f8f9fc]"
+                  : "text-[#64748b] hover:bg-[#f8f9fc] hover:text-[#1e293b]"
               )}
             >
               {tz}

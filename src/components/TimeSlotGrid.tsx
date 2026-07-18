@@ -49,7 +49,7 @@ function DayView({
 
   if (slots.length === 0) {
     return (
-      <div className="flex flex-col items-center justify-center gap-3 py-16 text-muted">
+      <div className="flex flex-col items-center justify-center gap-3 py-16 text-[#94a3b8]">
         <CalendarX className="w-8 h-8" />
         <p className="text-sm">No available times for this day</p>
       </div>
@@ -75,10 +75,10 @@ function DayView({
             className={cn(
               "w-full h-12 flex items-center justify-center rounded-xl border text-sm font-medium transition-all duration-150",
               isBooked
-                ? "border-[rgba(255,255,255,0.06)] text-muted line-through cursor-not-allowed opacity-30 bg-card"
+                ? "border-[#e2e8f0] text-[#cbd5e1] line-through cursor-not-allowed opacity-40 bg-[#f8f9fc]"
                 : isSelected
-                ? "bg-[#D4654A] text-white border-[#D4654A] shadow-lg shadow-[#D4654A]/20"
-                : "bg-[#FEFCF8] border-[rgba(61,64,91,0.1)] text-[#3D405B] hover:shadow-lg hover:shadow-[#D4654A]/10 hover:border-[#D4654A]/30 hover:bg-white border-l-2 border-l-transparent hover:border-l-[#D4654A]"
+                ? "bg-gradient-to-r from-[#1e3a8a] via-[#1e40af] to-[#3b82f6] text-white border-transparent shadow-lg shadow-[rgba(30,64,175,0.2)]"
+                : "bg-white border-[#e2e8f0] text-[#1e293b] hover:border-[#cbd5e1] hover:shadow-md hover:shadow-[rgba(30,64,175,0.06)]"
             )}
           >
             {display}
@@ -148,11 +148,11 @@ function WeekView({
 
           return (
             <div key={key} className="space-y-2">
-              <h4 className="text-xs font-semibold text-secondary tracking-wider text-center">
+              <h4 className="text-xs font-semibold text-[#94a3b8] tracking-wider text-center">
                 {dayLabel}
               </h4>
               {fullyBooked ? (
-                <div className="flex flex-col items-center justify-center gap-2 py-8 text-muted">
+                <div className="flex flex-col items-center justify-center gap-2 py-8 text-[#cbd5e1]">
                   <CalendarX className="w-6 h-6" />
                   <span className="text-xs">All booked</span>
                 </div>
@@ -179,10 +179,10 @@ function WeekView({
                         className={cn(
                           "w-full h-10 flex items-center justify-center rounded-xl border text-xs font-medium transition-all duration-150",
                           isBooked
-                            ? "border-[rgba(255,255,255,0.06)] text-muted line-through cursor-not-allowed opacity-30 bg-card"
+                            ? "border-[#e2e8f0] text-[#cbd5e1] line-through cursor-not-allowed opacity-40 bg-[#f8f9fc]"
                             : isSelected
-                            ? "bg-[#D4654A] text-white border-[#D4654A] shadow-lg shadow-[#D4654A]/20"
-                            : "bg-[#FEFCF8] border-[rgba(61,64,91,0.1)] text-[#3D405B] hover:shadow-lg hover:shadow-[#D4654A]/10 hover:border-[#D4654A]/30 hover:bg-white border-l-2 border-l-transparent hover:border-l-[#D4654A]"
+                            ? "bg-gradient-to-r from-[#1e3a8a] via-[#1e40af] to-[#3b82f6] text-white border-transparent shadow-lg shadow-[rgba(30,64,175,0.2)]"
+                            : "bg-white border-[#e2e8f0] text-[#1e293b] hover:border-[#cbd5e1] hover:shadow-md hover:shadow-[rgba(30,64,175,0.06)]"
                         )}
                       >
                         {display}
@@ -194,7 +194,7 @@ function WeekView({
                       (_, i) => (
                         <div
                           key={`empty-${i}`}
-                          className="w-full h-10 rounded-xl border border-dashed border-[rgba(255,255,255,0.04)]"
+                          className="w-full h-10 rounded-xl border border-dashed border-[#e2e8f0]/50"
                         />
                       )
                     )}
@@ -233,21 +233,21 @@ export default function TimeSlotGrid() {
   }
 
   return (
-    <div className="flex flex-col gap-5 p-6">
+    <div className="flex flex-col gap-5 p-6 lg:p-8">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
           <button
             onClick={backStep}
-            className="w-10 h-10 flex items-center justify-center rounded-xl text-secondary hover:bg-hover hover:text-primary transition-colors"
+            className="w-9 h-9 flex items-center justify-center rounded-full border border-[#e2e8f0] text-[#94a3b8] hover:border-[#cbd5e1] hover:text-[#64748b] transition-colors"
             title="Back to calendar"
           >
-            <ArrowLeft className="w-5 h-5" />
+            <ArrowLeft className="w-4 h-4" />
           </button>
           <div>
-            <h2 className="text-lg font-semibold text-primary tracking-tight">
+            <h2 className="text-lg font-semibold text-[#1e293b] tracking-tight">
               Pick a time that works for you
             </h2>
-            <p className="text-xs text-secondary mt-0.5">
+            <p className="text-xs text-[#94a3b8] mt-0.5">
               {selectedDate.toLocaleDateString("en-US", {
                 weekday: "long",
                 month: "long",
