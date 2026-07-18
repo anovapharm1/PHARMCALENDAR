@@ -78,7 +78,7 @@ function DayView({
                 ? "border-[#e2e8f0] text-[#cbd5e1] line-through cursor-not-allowed opacity-40 bg-[#f8f9fc]"
                 : isSelected
                 ? "bg-gradient-to-r from-[#1e3a8a] via-[#1e40af] to-[#3b82f6] text-white border-transparent shadow-lg shadow-[rgba(30,64,175,0.2)]"
-                : "bg-white border-[#e2e8f0] text-[#1e293b] hover:border-[#cbd5e1] hover:shadow-md hover:shadow-[rgba(30,64,175,0.06)]"
+                            : "bg-white border-[#e2e8f0] text-[#1e293b] hover:bg-gradient-to-r hover:from-[#1e3a8a] hover:via-[#1e40af] hover:to-[#3b82f6] hover:text-white hover:border-transparent hover:shadow-md hover:shadow-[rgba(30,64,175,0.2)]"
             )}
           >
             {display}
@@ -182,7 +182,7 @@ function WeekView({
                             ? "border-[#e2e8f0] text-[#cbd5e1] line-through cursor-not-allowed opacity-40 bg-[#f8f9fc]"
                             : isSelected
                             ? "bg-gradient-to-r from-[#1e3a8a] via-[#1e40af] to-[#3b82f6] text-white border-transparent shadow-lg shadow-[rgba(30,64,175,0.2)]"
-                            : "bg-white border-[#e2e8f0] text-[#1e293b] hover:border-[#cbd5e1] hover:shadow-md hover:shadow-[rgba(30,64,175,0.06)]"
+                : "bg-white border-[#e2e8f0] text-[#1e293b] hover:bg-gradient-to-r hover:from-[#1e3a8a] hover:via-[#1e40af] hover:to-[#3b82f6] hover:text-white hover:border-transparent hover:shadow-md hover:shadow-[rgba(30,64,175,0.2)]"
                         )}
                       >
                         {display}
@@ -245,7 +245,7 @@ export default function TimeSlotGrid() {
           </button>
           <div>
             <h2 className="text-lg font-semibold text-[#1e293b] tracking-tight">
-              Pick a time that works for you
+              Pick A Time That Works For You
             </h2>
             <p className="text-xs text-[#94a3b8] mt-0.5">
               {selectedDate.toLocaleDateString("en-US", {

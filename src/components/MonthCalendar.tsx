@@ -155,17 +155,17 @@ export default function MonthCalendar() {
                 onClick={() => !disabled && !isPast && handleDateClick(day)}
                 disabled={disabled || isPast}
                 className={cn(
-                  "relative w-[48px] h-[48px] flex items-center justify-center rounded-xl text-sm font-medium transition-all duration-150",
+                  "relative w-[48px] h-[48px] flex items-center justify-center text-sm font-medium transition-all duration-150",
                   isSel
-                    ? "bg-gradient-to-r from-[#1e3a8a] via-[#1e40af] to-[#3b82f6] text-white shadow-lg shadow-[rgba(30,64,175,0.25)]"
+                    ? "bg-gradient-to-r from-[#1e3a8a] via-[#1e40af] to-[#3b82f6] text-white shadow-lg shadow-[rgba(30,64,175,0.3)] rounded-full scale-110"
                     : disabled || isPast
                     ? "text-[#cbd5e1] cursor-not-allowed"
-                    : "text-[#1e293b] hover:bg-[#f8f9fc] hover:border hover:border-[#e2e8f0] cursor-pointer"
+                    : "text-[#1e293b] hover:bg-gradient-to-r hover:from-[#1e3a8a] hover:via-[#1e40af] hover:to-[#3b82f6] hover:text-white hover:shadow-md hover:shadow-[rgba(30,64,175,0.25)] hover:scale-105 cursor-pointer rounded-xl"
                 )}
               >
                 {day}
                 {isTdy && !isSel && (
-                  <span className="absolute bottom-1.5 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-[#1e40af]" />
+                  <span className="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-[#1e40af] border-2 border-white" />
                 )}
               </motion.button>
             );

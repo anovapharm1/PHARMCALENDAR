@@ -80,7 +80,7 @@ export default function ConfirmationView() {
           <p className="text-[#64748b]">
             {selectedTime} &middot; {duration} minutes
           </p>
-          <p className="text-[#94a3b8]">Peer Richelson</p>
+          <p className="text-[#94a3b8]">Procare Specialty Pharmacy</p>
         </div>
 
         <div className="flex flex-col gap-2 w-full">

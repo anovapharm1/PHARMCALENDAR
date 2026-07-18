@@ -38,8 +38,6 @@ function getRandomBlockedSlots(date: Date): string[] {
 }
 
 export function generateAvailableSlots(date: Date): string[] {
-  if (isWeekend(date)) return [];
-
   const allSlots: string[] = [];
   for (let h = 9; h <= 22; h++) {
     for (let m = 0; m < 60; m += 30) {

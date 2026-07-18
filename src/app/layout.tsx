@@ -17,7 +17,7 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
   title: "Pharmacy Calendar",
   description:
-    "Book a meeting with Peer Richelsen. Select a date and time that works for you.",
+    "Book a meeting with Procare Specialty Pharmacy. Select a date and time that works for you.",
 };
 
 export default function RootLayout({
